@@ -8,7 +8,7 @@ const SETS = {
 
 export function createFrames(canvas, { portrait }) {
   const { dir, count, focusX } = portrait ? SETS.mobile : SETS.desktop;
-  const url = (i) => `/frames/${dir}/f${String(i + 1).padStart(3, "0")}.webp`;
+  const url = (i) => `${import.meta.env.BASE_URL}frames/${dir}/f${String(i + 1).padStart(3, "0")}.webp`;
   const imgs = new Array(count);
   const ctx = canvas.getContext("2d", { alpha: false });
   let target = 0;
