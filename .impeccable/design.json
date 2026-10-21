@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T00:00:00Z",
+  "title": "Design System: CollabResearch Landing",
+  "extensions": {
+    "colorMeta": {
+      "green": { "role": "primary", "displayName": "Verde Bancada", "canonical": "#1f7a5a", "tonalRamp": ["#0b2a1f", "#123f2f", "#185e46", "#1f7a5a", "#3f9575", "#7ab79c", "#b8d9c8", "#eff5ec"] },
+      "moss": { "role": "secondary", "displayName": "Musgo", "canonical": "#557c55", "tonalRamp": ["#1c2a1c", "#2b3f2b", "#3f5f40", "#557c55", "#7ea06a", "#a9c39a", "#d8e4cf", "#f2f6ef"] },
+      "lichen-paper": { "role": "neutral", "displayName": "Líquen", "canonical": "#f6f8f5", "tonalRamp": ["#17251d", "#35493c", "#4d5f53", "#66736a", "#8a978d", "#c7d1c3", "#dde5da", "#f6f8f5"] },
+      "forest-night": { "role": "neutral", "displayName": "Floresta Noturna", "canonical": "#07110c", "tonalRamp": ["#030806", "#07110c", "#0c1912", "#112018", "#1b2e23", "#2c4335", "#93a696", "#eef4ec"] },
+      "lumen-blue": { "role": "tertiary", "displayName": "Espectro Lumen", "canonical": "#3b82f6", "tonalRamp": ["#1e3a8a", "#1d4ed8", "#3b82f6", "#8b5cf6", "#ef4444", "#facc15", "#ffe5c8", "#c9d8ff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 do hero e fechamento." },
+      "headline": { "displayName": "Headline", "purpose": "Títulos de seção e texto que se preenche." },
+      "body": { "displayName": "Body / UI", "purpose": "Parágrafos e toda interface do produto." }
+    },
+    "shadows": [
+      { "name": "ui-rest", "value": "0 1px 2px rgba(23,37,29,.05), 0 18px 40px -18px rgba(23,37,29,.3)", "purpose": "Fragmentos e mini-cards no claro." },
+      { "name": "ui-pop", "value": "0 2px 4px rgba(23,37,29,.06), 0 30px 60px -24px rgba(23,37,29,.42)", "purpose": "Janela do app, flutuantes, hub." },
+      { "name": "ui-night", "value": "0 2px 6px rgba(0,0,0,.3), 0 36px 70px -26px rgba(0,0,0,.75)", "purpose": "Cartões de UI sobre a noite." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Transições de estado e entradas." },
+      { "name": "scroll-scrub", "value": "progresso exato da rolagem (Lenis lerp 0.12)", "purpose": "Preenchimento, máscaras, entradas laterais, cenas da Lumen e filme." },
+      { "name": "lumen-spin", "value": "2.5s linear infinite", "purpose": "Borda cônica do botão Lumen." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "767px" },
+      { "name": "tablet", "value": "900px" },
+      { "name": "compact", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal: criar conta.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Criar conta grátis</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:12px;background:#1f7a5a;color:#fff;font:700 .95rem/1 'Nunito Variable',system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 24px -10px rgba(31,122,90,.6);transition:background-color .25s}.ds-btn:hover{background:#185e46}.ds-btn:focus-visible{outline:2px solid #17251d;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Ação secundária.",
+      "html": "<a class=\"ds-ghost\" href=\"#\">Ver como funciona</a>",
+      "css": ".ds-ghost{display:inline-flex;align-items:center;height:48px;padding:0 20px;border:1px solid #c7d1c3;border-radius:12px;color:#17251d;font:700 .95rem/1 'Nunito Variable',system-ui,sans-serif;text-decoration:none;transition:border-color .25s,background-color .25s}.ds-ghost:hover{border-color:#4d5f53;background:#fff}.ds-ghost:focus-visible{outline:2px solid #1f7a5a;outline-offset:3px}"
+    },
+    {
+      "name": "Status Tag",
+      "kind": "chip",
+      "refersTo": "tag-ok",
+      "description": "Nota ou status, cores reais do app.",
+      "html": "<span class=\"ds-tag\">8,6/10</span>",
+      "css": ".ds-tag{display:inline-flex;padding:.2rem .6rem;border-radius:999px;background:#eff5ec;color:#0d7a4c;font:650 .72rem/1.3 'Nunito Variable',system-ui,sans-serif;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Lumen Button",
+      "kind": "custom",
+      "description": "Botão real da Lumen com borda cônica girando.",
+      "html": "<span class=\"ds-lumen\"><span class=\"ds-lumen__spin\"></span><span class=\"ds-lumen__fill\"></span><span class=\"ds-lumen__txt\">Recomendar com Lumen</span></span>",
+      "css": ".ds-lumen{position:relative;display:inline-flex;align-items:center;height:36px;padding:0 16px;overflow:hidden;border-radius:999px;background:#dde5da;color:#1f7a5a;font:700 .74rem/1 'Nunito Variable',system-ui,sans-serif;isolation:isolate}.ds-lumen__spin{position:absolute;left:50%;top:50%;width:260px;height:260px;margin:-130px 0 0 -130px;background:conic-gradient(transparent 20%,#ef4444 30%,#facc15 45%,#3b82f6 60%,transparent 70%);animation:ds-spin 2.5s linear infinite;z-index:-2}.ds-lumen__fill{position:absolute;inset:2px;border-radius:999px;background:#fff;z-index:-1}@keyframes ds-spin{to{transform:rotate(360deg)}}"
+    },
+    {
+      "name": "Night Tile",
+      "kind": "card",
+      "refersTo": "night-tile",
+      "description": "Card escuro com luz que segue o cursor.",
+      "html": "<article class=\"ds-tile\"><h3>Certificado não compra nota</h3><p>Documentos só contam quando são relevantes para a pesquisa.</p></article>",
+      "css": ".ds-tile{position:relative;padding:32px;border-radius:16px;background:#112018;border:1px solid rgba(214,236,222,.1);color:#eef4ec;overflow:hidden;font-family:'Nunito Variable',system-ui,sans-serif}.ds-tile::before{content:'';position:absolute;inset:0;background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),rgba(196,230,210,.11),transparent 62%);opacity:0;transition:opacity .4s}.ds-tile:hover::before{opacity:1}.ds-tile h3{margin:0;font:700 1.5rem/1.1 'Bricolage Grotesque Variable',sans-serif;letter-spacing:-.02em}.ds-tile p{color:#bccabe}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Bancada e a Lumen",
+    "overview": "A bancada é a pesquisa: chão claro de líquen, verdes da própria plataforma, interface real como ilustração. A Lumen é a luz: um núcleo líquido e iridescente que só aparece no escuro, no espectro do botão real da IA. O movimento é o argumento: o que está disperso converge.",
+    "keyCharacteristics": [
+      "Fragmentos reais da UI (Nunito, raios 12–16px) como única ilustração.",
+      "Display condensado e pesado (Bricolage a 90–92% de largura) contra corpo arredondado (Nunito).",
+      "Espectro da Lumen restrito à IA; o resto é verde.",
+      "Máscara circular em toda mudança de cor de seção.",
+      "Cards escuros acendem com luz que segue o cursor."
+    ],
+    "rules": [
+      { "name": "The Luz Só da Lumen Rule", "body": "Azul, violeta, coral e âmbar aparecem apenas em elementos da IA. O núcleo da Lumen nunca é verde.", "section": "colors" },
+      { "name": "The Uma Cor por Campo Rule", "body": "Cada seção é um campo de uma cor só; troca de campo sempre por máscara circular, nunca por corte seco.", "section": "colors" },
+      { "name": "The UI Fala Nunito Rule", "body": "Todo pedaço de interface do produto usa Nunito nos tamanhos reais do app (11–15px); a Bricolage nunca entra numa tela de produto, exceto na nota da Lumen.", "section": "typography" },
+      { "name": "The Borda ou Sombra Rule", "body": "Cada superfície declara elevação uma vez: sombra no claro, borda de 1px no escuro.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do prender texto que se preenche, máscaras e entradas laterais ao progresso exato da rolagem (scrub sem suavização).",
+      "Do usar interface real do CollabResearch como ilustração e rotular dados de exemplo.",
+      "Do revelar cada mudança de cor de seção com máscara circular.",
+      "Do respeitar movimento reduzido por padrão e oferecer o botão para ligar as animações."
+    ],
+    "donts": [
+      "Don't pintar o núcleo da Lumen de verde nem usar o espectro fora da IA.",
+      "Don't inventar números de uso (projetos, alunos, instituições).",
+      "Don't usar rótulo acima de título (kicker/eyebrow) nem texto em gradiente.",
+      "Don't trocar a Nunito da UI por outra fonte nas telas de produto."
+    ]
+  }
+}
