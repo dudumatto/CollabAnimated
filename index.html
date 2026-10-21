@@ -8,18 +8,18 @@
   <meta name="theme-color" content="#f6f8f5" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <script>
-    // Movimento reduzido pelo sistema é respeitado; ?motion (ou o botão da página) liga as animações
-    // e fica salvo neste navegador. ?motion=0 volta ao padrão do sistema.
+    // Animado por padrão. Quem pede menos movimento no sistema vê um botão para reduzir;
+    // a escolha fica salva neste navegador (cr-motion=0 reduz, ?motion liga, ?motion=0 reduz).
     (function () {
-      var d = document.documentElement, force = false;
+      var d = document.documentElement, off = false;
       try {
-        if (/[?&]motion=0/.test(location.search)) localStorage.removeItem("cr-motion");
-        else if (/[?&]motion(&|=|$)/.test(location.search)) localStorage.setItem("cr-motion", "1");
-        force = localStorage.getItem("cr-motion") === "1";
+        if (/[?&]motion=0/.test(location.search)) localStorage.setItem("cr-motion", "0");
+        else if (/[?&]motion(&|=|$)/.test(location.search)) localStorage.removeItem("cr-motion");
+        off = localStorage.getItem("cr-motion") === "0";
       } catch (e) {}
       var sys = matchMedia("(prefers-reduced-motion: reduce)").matches;
-      d.classList.add("js", sys && !force ? "rm" : "anim");
-      if (sys) d.classList.add(force ? "rm-forced" : "rm-sys");
+      d.classList.add("js", off ? "rm" : "anim");
+      if (sys || off) d.classList.add("rm-ask");
     })();
   </script>
 </head>

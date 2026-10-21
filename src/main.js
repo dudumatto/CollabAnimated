@@ -23,14 +23,14 @@ const portrait = matchMedia("(max-width: 767px), (max-aspect-ratio: 1/1)").match
 
 mountIcons();
 
-/* sistema pediu menos movimento: a escolha fica com o visitante */
+/* quem pede menos movimento no sistema (ou já escolheu reduzir) vê o botão */
 const toggle = $("[data-motion-toggle]");
-if (root.classList.contains("rm-sys") || root.classList.contains("rm-forced")) {
+if (root.classList.contains("rm-ask")) {
   toggle.hidden = false;
-  toggle.textContent = reduced ? "Seu sistema pediu menos movimento. Ver com animações" : "Reduzir movimento";
+  toggle.textContent = reduced ? "Movimento reduzido. Ver com animações" : "Reduzir movimento";
   toggle.addEventListener("click", () => {
     try {
-      reduced ? localStorage.setItem("cr-motion", "1") : localStorage.removeItem("cr-motion");
+      reduced ? localStorage.removeItem("cr-motion") : localStorage.setItem("cr-motion", "0");
     } catch {}
     location.reload();
   });
