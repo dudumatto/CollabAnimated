@@ -245,6 +245,7 @@ function motion() {
   };
   const converge = (p) => {
     const e = eo(p);
+    if (!pull.length) measurePull(); // o ScrollTrigger chama onUpdate já no create, antes da 1ª medição
     frags.forEach((f, i) => {
       const k = eo(clamp(p * 1.25 - i * 0.05));
       f.style.translate = `${(pull[i][0] * k).toFixed(1)}px ${(pull[i][1] * k).toFixed(1)}px`;
